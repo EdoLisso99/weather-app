@@ -1,0 +1,10 @@
+.navbar {
+    display: flex;
+    border: 1px solid black;
+    align-items: center;
+}
+
+.navbar__city {
+    font-size: 75px;
+    font-weight: 600;
+}

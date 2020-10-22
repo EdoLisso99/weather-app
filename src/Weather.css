@@ -1,0 +1,64 @@
+* {
+    border: 1px solid green;
+    padding: 10px;
+}
+
+.weather {
+    display: flex;
+    flex-direction: column;
+}
+
+.weather__celsius {
+    font-size: 100px;
+    flex-grow: 1;
+}
+
+.weather__day {}
+
+.weather__icon {
+    display: flex;
+    flex-direction: column;
+}
+
+.weather__iconDescription {}
+
+.weather__info {
+    border: 1px solid blue;
+    display: flex;
+    flex-direction: row;
+}
+
+.weather__maxAndMin {}
+
+.weather__otherDays {}
+
+.weather__otherIcon {}
+
+.weather__otherInfo {
+    display: flex;
+    flex-direction: row;
+}
+
+.weather__otherMaxAndMin {}
+
+.weather__perceivedTemperature {
+    display: flex;
+    align-content: flex-end;
+}
+
+.weather__shortInfo {
+    border: 1px solid violet;
+    display: flex;
+    flex-direction: row;
+}
+
+.weather__temperature {
+    display: flex;
+    flex-direction: column;
+}
+
+.weather__time {}
+
+.weather__wind {}
+
+.weather__windDirection {}
