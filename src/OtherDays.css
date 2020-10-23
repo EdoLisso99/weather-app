@@ -1,0 +1,25 @@
+.otherDays {
+  display: flex;
+  flex-direction: row;
+}
+
+.otherDays__maxAndMin {
+}
+
+.otherDays__max {
+}
+
+.otherDays__min {
+}
+
+.otherDays__icon {
+}
+
+.otherDays__day {
+}
+
+.otherDays__shortInfo {
+  border: 1px solid violet;
+  display: flex;
+  flex-direction: column;
+}

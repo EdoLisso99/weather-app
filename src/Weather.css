@@ -1,64 +1,77 @@
 * {
-    border: 1px solid green;
-    padding: 10px;
+  border: 1px solid green;
+  padding: 10px;
 }
 
 .weather {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .weather__celsius {
-    font-size: 100px;
-    flex-grow: 1;
+  font-size: 100px;
+  flex-grow: 1;
 }
 
-.weather__day {}
+.weather__clouds {
+}
+
+.weather__humidity {
+}
 
 .weather__icon {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
-.weather__iconDescription {}
+.weather__iconDescription {
+}
+
+.weather__image {
+}
 
 .weather__info {
-    border: 1px solid blue;
-    display: flex;
-    flex-direction: row;
+  border: 1px solid blue;
+  display: flex;
+  flex-direction: row;
 }
 
-.weather__maxAndMin {}
-
-.weather__otherDays {}
-
-.weather__otherIcon {}
+.weather__maxAndMin {
+}
 
 .weather__otherInfo {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
-
-.weather__otherMaxAndMin {}
 
 .weather__perceivedTemperature {
-    display: flex;
-    align-content: flex-end;
+  display: flex;
+  align-content: flex-end;
 }
 
-.weather__shortInfo {
-    border: 1px solid violet;
-    display: flex;
-    flex-direction: row;
+.weather__pressure {
+}
+
+.weather__sunrise {
+}
+
+.weather__sunset {
 }
 
 .weather__temperature {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
-.weather__time {}
+.weather__time {
+}
 
-.weather__wind {}
+.weather__visibility {
+}
 
-.weather__windDirection {}
+.weather__wind {
+}
+
+.weather__windDirection {
+}
