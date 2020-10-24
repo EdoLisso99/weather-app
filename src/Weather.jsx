@@ -6,53 +6,40 @@ function Weather() {
   const [jsonData, setJsonData] = useState({});
   //Se vedo che JsonData non sbugga posso sbarazzarmi benissimo di questo blocco sottostante
   const [dataDef, setDataDef] = useState({
-    coord: {
-      lon: -122.08,
-      lat: 37.39,
-    },
+    coord: { lon: 37.62, lat: 55.75 },
     weather: [
-      {
-        id: 800,
-        main: "Clear",
-        description: "clear sky",
-        icon: "01d",
-      },
+      { id: 803, main: "Clouds", description: "broken clouds", icon: "04d" },
     ],
     base: "stations",
     main: {
-      temp: 282.55,
-      feels_like: 281.86,
-      temp_min: 280.37,
-      temp_max: 284.26,
-      pressure: 1023,
-      humidity: 100,
+      temp: 284.43,
+      feels_like: 279.66,
+      temp_min: 283.15,
+      temp_max: 286.15,
+      pressure: 1008,
+      humidity: 62,
     },
-    visibility: 16093,
-    wind: {
-      speed: 1.5,
-      deg: 350,
-    },
-    clouds: {
-      all: 1,
-    },
-    dt: 1560350645,
+    visibility: 10000,
+    wind: { speed: 5, deg: 250 },
+    clouds: { all: 75 },
+    dt: 1603543772,
     sys: {
       type: 1,
-      id: 5122,
-      message: 0.0139,
-      country: "US",
-      sunrise: 1560343627,
-      sunset: 1560396563,
+      id: 9029,
+      country: "RU",
+      sunrise: 1603513150,
+      sunset: 1603548475,
     },
-    timezone: -25200,
-    id: 420006353,
-    name: "Mountain View",
+    timezone: 10800,
+    id: 524901,
+    name: "Moscow",
     cod: 200,
   });
 
   useEffect(() => {
+    // Implementare un controllo affinchè non si digiti una città sbagliata!
     fetch(
-      "http://api.openweathermap.org/data/2.5/weather?q=Lecco&appid=fd2c86fbff118f10312f83b48138b8f8"
+      "http://api.openweathermap.org/data/2.5/weather?q=Bergamo&appid=fd2c86fbff118f10312f83b48138b8f8"
     )
       .then((response) => response.json())
       .then(
@@ -66,16 +53,40 @@ function Weather() {
       );
   }, []);
 
-  function setIcon(id) {
-    return "http://openweathermap.org/img/wn/01d@2x.png";
+  function getDirectionFromDegree(angle) {
+    const degreePerDirection = 360 / 8;
+    const offsetAngle = angle + degreePerDirection / 2;
+    return offsetAngle >= 0 * degreePerDirection &&
+      offsetAngle < 1 * degreePerDirection
+      ? "North"
+      : offsetAngle >= 1 * degreePerDirection &&
+        offsetAngle < 2 * degreePerDirection
+      ? "North-East"
+      : offsetAngle >= 2 * degreePerDirection &&
+        offsetAngle < 3 * degreePerDirection
+      ? "East"
+      : offsetAngle >= 3 * degreePerDirection &&
+        offsetAngle < 4 * degreePerDirection
+      ? "South-East"
+      : offsetAngle >= 4 * degreePerDirection &&
+        offsetAngle < 5 * degreePerDirection
+      ? "South"
+      : offsetAngle >= 5 * degreePerDirection &&
+        offsetAngle < 6 * degreePerDirection
+      ? "South-West"
+      : offsetAngle >= 6 * degreePerDirection &&
+        offsetAngle < 7 * degreePerDirection
+      ? "West"
+      : "North-West";
   }
 
   return (
     <div className="weather">
-      <p className="weather__time">Time: 22 October 2020</p>
+      {/*Il tempo deve essere aggiornato ad ogni secondo */}
+      <p className="weather__time">Time: {Date(jsonData.dt).slice(0, 21)}</p>
       <p className="weather__maxAndMin">
-        Max:{Math.round((jsonData.main?.temp_max - 273.15) * 10) / 10}° Min:
-        {Math.round((jsonData.main?.temp_min - 273.15) * 10) / 10}°
+        Max:{Math.round((jsonData.main?.temp_max - 273.15) * 10) / 10}°C Min:
+        {Math.round((jsonData.main?.temp_min - 273.15) * 10) / 10}°C
       </p>
       <div className="weather__info">
         <div className="weather__temperature">
@@ -90,7 +101,7 @@ function Weather() {
         <div className="weather__icon">
           <img
             className="weather__image"
-            src={setIcon(jsonData.weather?.id)}
+            src={`http://openweathermap.org/img/wn/${jsonData.weather?.[0].icon}@2x.png`}
             alt="Weather Icon"
           />
           <p className="weather__iconDescription">
@@ -100,27 +111,36 @@ function Weather() {
             ).toString()}
           </p>
         </div>
+        {/* Lo devo rendere una tabella! */}
         <div className="weather__otherInfo">
-          <div className="weather__humidity">
-            Humidity: {jsonData.main?.pressure}
+          <div className="weather__wind">
+            Wind Speed {jsonData.wind?.speed} [m/sec]
           </div>
-          <div className="weather__wind">Wind Speed {jsonData.wind?.speed}</div>
           <div className="weather__windDirection">
-            Wind direction: {jsonData.wind?.deg}
+            Wind direction: {getDirectionFromDegree(jsonData.wind?.deg)}
+          </div>
+          <div className="weather__windDirection">
+            Wind force {jsonData.wind?.gust} [m/sec]
           </div>
           <div className="weather__pressure">
-            Pressure {jsonData.main?.pressure}
+            Pressure {jsonData.main?.pressure} [hPa]
           </div>
           <div className="weather__humidity">
-            Humidity {jsonData.main?.humidity}
+            Humidity
+            {jsonData.main?.humidity} [%]
           </div>
           <div className="weather__visibility">
-            Visibility {jsonData.visibility}
+            Visibility {jsonData.visibility} [m]
           </div>
-          <div className="weather__clouds">Clouds {jsonData.clouds?.all}</div>
-          <div className="weather__sunset">Sunset {jsonData.sys?.sunset}</div>
+          <div className="weather__clouds">
+            Cloudiness {jsonData.clouds?.all} [%]
+          </div>
+          {/* Da sistemare sunset e sunrise! */}
+          <div className="weather__sunset">
+            Sunset {Date(jsonData.sys?.sunset)}
+          </div>
           <div className="weather__sunrise">
-            Sunrise {jsonData.sys?.sunrise}
+            Sunrise {Date(jsonData.sys?.sunrise)}
           </div>
         </div>
       </div>
