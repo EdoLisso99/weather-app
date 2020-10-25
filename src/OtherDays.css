@@ -19,7 +19,7 @@
 }
 
 .otherDays__shortInfo {
-  border: 1px solid violet;
+  border: 1px solid rgb(73, 17, 73);
   display: flex;
   flex-direction: column;
 }

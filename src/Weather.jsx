@@ -1,101 +1,62 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
 import "./Weather.css";
 import OtherDays from "./OtherDays";
+import { WeatherContext } from "./WeatherContext";
 
 function Weather() {
-  const [jsonData, setJsonData] = useState({});
-  //Se vedo che JsonData non sbugga posso sbarazzarmi benissimo di questo blocco sottostante
-  const [dataDef, setDataDef] = useState({
-    coord: { lon: 37.62, lat: 55.75 },
-    weather: [
-      { id: 803, main: "Clouds", description: "broken clouds", icon: "04d" },
-    ],
-    base: "stations",
-    main: {
-      temp: 284.43,
-      feels_like: 279.66,
-      temp_min: 283.15,
-      temp_max: 286.15,
-      pressure: 1008,
-      humidity: 62,
-    },
-    visibility: 10000,
-    wind: { speed: 5, deg: 250 },
-    clouds: { all: 75 },
-    dt: 1603543772,
-    sys: {
-      type: 1,
-      id: 9029,
-      country: "RU",
-      sunrise: 1603513150,
-      sunset: 1603548475,
-    },
-    timezone: 10800,
-    id: 524901,
-    name: "Moscow",
-    cod: 200,
-  });
-
-  useEffect(() => {
-    // Implementare un controllo affinchè non si digiti una città sbagliata!
-    fetch(
-      "http://api.openweathermap.org/data/2.5/weather?q=Bergamo&appid=fd2c86fbff118f10312f83b48138b8f8"
-    )
-      .then((response) => response.json())
-      .then(
-        (result) => {
-          setJsonData(result);
-        },
-        (error) => {
-          console.log("Si è verificato un errore!");
-          setJsonData(dataDef);
-        }
-      );
-  }, []);
+  const [jsonData, setJsonData] = useContext(WeatherContext);
 
   function getDirectionFromDegree(angle) {
     const degreePerDirection = 360 / 8;
     const offsetAngle = angle + degreePerDirection / 2;
     return offsetAngle >= 0 * degreePerDirection &&
       offsetAngle < 1 * degreePerDirection
-      ? "North"
+      ? "N"
       : offsetAngle >= 1 * degreePerDirection &&
         offsetAngle < 2 * degreePerDirection
-      ? "North-East"
+      ? "N-E"
       : offsetAngle >= 2 * degreePerDirection &&
         offsetAngle < 3 * degreePerDirection
-      ? "East"
+      ? "E"
       : offsetAngle >= 3 * degreePerDirection &&
         offsetAngle < 4 * degreePerDirection
-      ? "South-East"
+      ? "S-E"
       : offsetAngle >= 4 * degreePerDirection &&
         offsetAngle < 5 * degreePerDirection
-      ? "South"
+      ? "S"
       : offsetAngle >= 5 * degreePerDirection &&
         offsetAngle < 6 * degreePerDirection
-      ? "South-West"
+      ? "S-W"
       : offsetAngle >= 6 * degreePerDirection &&
         offsetAngle < 7 * degreePerDirection
-      ? "West"
-      : "North-West";
+      ? "W"
+      : "N-W";
+  }
+
+  function toDateTime(secs) {
+    let t = new Date(1970, 0, 1);
+    t.setSeconds(secs);
+    return `${t.getHours()}:${t.getMinutes()}`;
   }
 
   return (
     <div className="weather">
       {/*Il tempo deve essere aggiornato ad ogni secondo */}
-      <p className="weather__time">Time: {Date(jsonData.dt).slice(0, 21)}</p>
-      <p className="weather__maxAndMin">
+      <div className="weather__time">
+        Time: {Date(jsonData.dt).slice(0, 21)}
+      </div>
+      <div className="weather__maxAndMin">
         Max:{Math.round((jsonData.main?.temp_max - 273.15) * 10) / 10}°C Min:
         {Math.round((jsonData.main?.temp_min - 273.15) * 10) / 10}°C
-      </p>
+      </div>
       <div className="weather__info">
         <div className="weather__temperature">
           <div className="weather__celsius">
-            {Math.round((jsonData.main?.temp - 273.15) * 10) / 10}°
+            {Math.round((jsonData.main?.temp - 273.15) * 10) / 10}°C
           </div>
           <div className="weather__perceivedTemperature">
             Perceived temperature:
-            {Math.round((jsonData.main?.feels_like - 273.15) * 10) / 10}°
+            {Math.round((jsonData.main?.feels_like - 273.15) * 10) / 10}°C
           </div>
         </div>
         <div className="weather__icon">
@@ -114,37 +75,55 @@ function Weather() {
         {/* Lo devo rendere una tabella! */}
         <div className="weather__otherInfo">
           <div className="weather__wind">
-            Wind Speed {jsonData.wind?.speed} [m/sec]
-          </div>
-          <div className="weather__windDirection">
-            Wind direction: {getDirectionFromDegree(jsonData.wind?.deg)}
-          </div>
-          <div className="weather__windDirection">
-            Wind force {jsonData.wind?.gust} [m/sec]
+            <p className="weather__windTitle">Wind</p>
+            <div className="weather__windProp">
+              <div className="weather__windSpeed">
+                <p>Speed</p>
+                <p>{jsonData.wind?.speed}[m/sec]</p>
+              </div>
+              <div className="weather__windDirection">
+                <p>Direction</p>
+                <p>{getDirectionFromDegree(jsonData.wind?.deg)}</p>
+              </div>
+              <div className="weather__windforce">
+                <p>Force</p>
+                <p>{jsonData.wind?.gust}[m/sec]</p>
+              </div>
+            </div>
           </div>
           <div className="weather__pressure">
-            Pressure {jsonData.main?.pressure} [hPa]
+            <p>Pressure</p>
+            <p>{jsonData.main?.pressure}[hPa]</p>
           </div>
           <div className="weather__humidity">
-            Humidity
-            {jsonData.main?.humidity} [%]
+            <p>Humidity</p>
+            <p>{jsonData.main?.humidity}[%]</p>
           </div>
           <div className="weather__visibility">
-            Visibility {jsonData.visibility} [m]
+            <p>Visibility</p>
+            <p>{jsonData.visibility}[m]</p>
           </div>
           <div className="weather__clouds">
-            Cloudiness {jsonData.clouds?.all} [%]
+            <p>Cloudiness</p>
+            <p>{jsonData.clouds?.all}[%]</p>
           </div>
           {/* Da sistemare sunset e sunrise! */}
           <div className="weather__sunset">
-            Sunset {Date(jsonData.sys?.sunset)}
+            <p>Sunset</p>
+            <p>{toDateTime(jsonData.sys?.sunset)}</p>
           </div>
           <div className="weather__sunrise">
-            Sunrise {Date(jsonData.sys?.sunrise)}
+            <p>Sunrise</p>
+            <p>{toDateTime(jsonData.sys?.sunrise)}</p>
           </div>
         </div>
       </div>
-      <OtherDays />
+      <div className="weather__otherDays">
+        <OtherDays />
+        <OtherDays />
+        <OtherDays />
+        <OtherDays />
+      </div>
     </div>
   );
 }

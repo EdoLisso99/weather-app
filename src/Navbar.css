@@ -10,5 +10,16 @@
   font-weight: 600;
 }
 
-.navbar__searchbar {
+.navbar__form {
+  display: flex;
+  flex-direction: row;
+}
+
+.navbar__input {
+}
+
+.navbar__submit {
+}
+
+.navbar__submitBtn {
 }
