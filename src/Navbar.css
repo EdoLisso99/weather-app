@@ -10,7 +10,11 @@
   font-weight: 600;
 }
 
+.navbar__country {
+}
+
 .navbar__form {
+  border: 1px solid violet;
   display: flex;
   flex-direction: row;
 }
@@ -18,8 +22,16 @@
 .navbar__input {
 }
 
-.navbar__submit {
+.navbar__searchbar {
+  display: flex;
+  flex-direction: column;
 }
 
 .navbar__submitBtn {
+}
+
+.navbar__suggestions {
+}
+
+.navbar__suggestionComponent {
 }

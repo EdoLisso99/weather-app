@@ -6,7 +6,7 @@ export const WeatherProvider = (props) => {
   useEffect(() => {
     // Implementare un controllo affinchè non si digiti una città sbagliata!
     fetch(
-      "http://api.openweathermap.org/data/2.5/weather?q=Moscow&appid=fd2c86fbff118f10312f83b48138b8f8"
+      "http://api.openweathermap.org/data/2.5/weather?q=Lecco&appid=fd2c86fbff118f10312f83b48138b8f8"
     )
       .then((response) => response.json())
       .then(
