@@ -2,27 +2,38 @@ import React, { useContext, useState } from "react";
 import "./Navbar.css";
 import { WeatherContext } from "./WeatherContext";
 import Countries from "./Countries";
-import Information from "./Information-json";
+import cities from "cities.json";
 
 function NavBar() {
+  const { data, city } = useContext(WeatherContext);
   const [input, setInput] = useState("");
-  const [jsonData, setJsonData] = useContext(WeatherContext);
+  const [jsonData, setJsonData] = data;
+  const [cityName, setCityName] = city;
   const [suggestions, setSuggestions] = useState([]);
 
   const setCity = (event) => {
+    let citta = input.trim().split(",")[0];
+    if (citta.length === null) console.log("ERRORE DIOCANE");
     event.preventDefault();
-    console.log("Inside setCity");
+    setCityName(input.trim().split(",")[0]);
+    setInput("");
+    setSuggestions([]);
   };
 
   const onTextChanged = (e) => {
-    const value = e.target.value;
+    let value = e.target.value;
     setInput(value);
     let newSuggestions = [];
-    if (value.length > 0) {
-      const regex = new RegExp(`^${value}`, "i");
-      newSuggestions = Information.Afghanistan.sort().filter((v) =>
-        regex.test(v)
-      );
+    if (value.length >= 5) {
+      value = value.toLowerCase();
+      const regex = new RegExp([value]);
+      for (let i = 0; i < cities.length; i++) {
+        if (regex.test(cities[i]["name"].toLowerCase()))
+          newSuggestions = [
+            ...newSuggestions,
+            `${cities[i]["name"]}, ${cities[i]["country"]}`,
+          ];
+      }
     }
     setSuggestions(newSuggestions);
   };
@@ -45,6 +56,7 @@ function NavBar() {
             type="text"
             placeholder="Type a city or a country..."
             onChange={(event) => onTextChanged(event)}
+            onSubmit={setCity}
           />
           <button
             className="navbar__submitBtn"

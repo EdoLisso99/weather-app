@@ -4,7 +4,8 @@ import OtherDays from "./OtherDays";
 import { WeatherContext } from "./WeatherContext";
 
 function Weather() {
-  const [jsonData, setJsonData] = useContext(WeatherContext);
+  const { data } = useContext(WeatherContext);
+  const [jsonData, setJsonData] = data;
 
   function getDirectionFromDegree(angle) {
     const degreePerDirection = 360 / 8;
@@ -36,12 +37,16 @@ function Weather() {
   function toDateTime(secs) {
     let t = new Date(1970, 0, 1);
     t.setSeconds(secs);
-    return `${t.getHours()}:${t.getMinutes()}`;
+    let hours = t.getHours();
+    let minutes = t.getMinutes();
+    if (hours < 10) hours = "0" + hours;
+    if (minutes < 10) minutes = "0" + minutes;
+    return hours + ":" + minutes;
   }
 
   return (
     <div className="weather">
-      {/*Il tempo deve essere aggiornato ad ogni secondo */}
+      {/*Il tempo deve essere aggiornato ad ogni secondo O mi aiuto con il fuso orario e lo tengo fisso? */}
       <div className="weather__time">
         Time: {Date(jsonData.dt).slice(0, 21)}
       </div>
@@ -107,7 +112,6 @@ function Weather() {
             <p>Cloudiness</p>
             <p>{jsonData.clouds?.all}[%]</p>
           </div>
-          {/* Da sistemare sunset e sunrise! */}
           <div className="weather__sunset">
             <p>Sunset</p>
             <p>{toDateTime(jsonData.sys?.sunset)}</p>

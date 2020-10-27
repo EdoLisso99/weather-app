@@ -3,30 +3,6 @@ import React, { useEffect, useState, createContext } from "react";
 export const WeatherContext = createContext();
 
 export const WeatherProvider = (props) => {
-  useEffect(() => {
-    // Implementare un controllo affinchè non si digiti una città sbagliata!
-    fetch(
-      "http://api.openweathermap.org/data/2.5/weather?q=Lecco&appid=fd2c86fbff118f10312f83b48138b8f8"
-    )
-      .then((response) => response.json())
-      .then(
-        (result) => {
-          if (result.cod === "404" || result.message === "city not found") {
-            alert(
-              "Error! The chosen city has an invalid name or country.\nPlease use ISO 3166 country codes.\nThe weather will be shown in the default location"
-            );
-            setJsonData(dataDef);
-          } else {
-            setJsonData(result);
-          }
-        },
-        (error) => {
-          console.log("Si è verificato un errore!");
-          setJsonData(dataDef);
-        }
-      );
-  }, []);
-
   const [jsonData, setJsonData] = useState({});
   const [cityName, setCityName] = useState("");
   const [dataDef, setDataDef] = useState({
@@ -60,8 +36,36 @@ export const WeatherProvider = (props) => {
     cod: 200,
   });
 
+  useEffect(() => {
+    // Implementare un controllo affinchè non si digiti una città sbagliata!
+    fetch(
+      `http://api.openweathermap.org/data/2.5/weather?q=${
+        cityName.length === 0 ? "Lecco" : cityName
+      }&appid=fd2c86fbff118f10312f83b48138b8f8`
+    )
+      .then((response) => response.json())
+      .then(
+        (result) => {
+          if (result.cod === "404" || result.message === "city not found") {
+            alert(
+              "Error! The chosen city has an invalid name or country.\nPlease use ISO 3166 country codes.\nThe weather will be shown in the default location"
+            );
+            setJsonData(dataDef);
+          } else {
+            setJsonData(result);
+          }
+        },
+        (error) => {
+          console.log("Si è verificato un errore!");
+          setJsonData(dataDef);
+        }
+      );
+  }, [cityName]);
+
   return (
-    <WeatherContext.Provider value={[jsonData, setJsonData]}>
+    <WeatherContext.Provider
+      value={{ data: [jsonData, setJsonData], city: [cityName, setCityName] }}
+    >
       {props.children}
     </WeatherContext.Provider>
   );
