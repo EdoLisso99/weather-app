@@ -3,10 +3,13 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+import { WeatherProvider } from "./WeatherContext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <WeatherProvider>
+      <App />
+    </WeatherProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

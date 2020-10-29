@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./Weather.css";
 import OtherDays from "./OtherDays";
 import { WeatherContext } from "./WeatherContext";
@@ -6,6 +6,7 @@ import { WeatherContext } from "./WeatherContext";
 function Weather() {
   const { data } = useContext(WeatherContext);
   const [jsonData, setJsonData] = data;
+  const index = [1, 2, 3, 4, 5, 6, 7];
 
   function getDirectionFromDegree(angle) {
     const degreePerDirection = 360 / 8;
@@ -44,24 +45,110 @@ function Weather() {
     return hours + ":" + minutes;
   }
 
+  function roundTemp(number) {
+    let temp = Math.round((number - 273.15) * 10) / 10;
+    return temp;
+  }
+
+  function toDateString(date) {
+    let strDate = date.split(" ");
+    let month;
+    let day;
+    switch (strDate[1]) {
+      case "Jan":
+        month = "January";
+        break;
+      case "Feb":
+        month = "february";
+        break;
+      case "Mar":
+        month = "March";
+        break;
+      case "Apr":
+        month = "April";
+        break;
+      case "May":
+        month = "May";
+        break;
+      case "Jun":
+        month = "June";
+        break;
+      case "Jul":
+        month = "July";
+        break;
+      case "Aug":
+        month = "August";
+        break;
+      case "Sep" || "Sept":
+        month = "September";
+        break;
+      case "Oct":
+        month = "October";
+        break;
+      case "Nov":
+        month = "November";
+        break;
+      case "Dec":
+        month = "December";
+        break;
+      default:
+        month = "January";
+        break;
+    }
+
+    switch (strDate[0]) {
+      case "Sun":
+        day = "Sunday";
+        break;
+      case "Mon":
+        day = "Monday";
+        break;
+      case "Tue" || "Tues":
+        day = "Tuesday";
+        break;
+      case "Wed":
+        day = "Wednesday";
+        break;
+      case "Thu" || "Thur" || "Thurs":
+        day = "Thursday";
+        break;
+      case "Fri":
+        day = "Friday";
+        break;
+      case "Sat":
+        day = "Saturday";
+        break;
+      default:
+        day = "Sunday";
+        break;
+    }
+    return `${day} ${strDate[2]} ${month} ${strDate[3]} ${strDate[4]}`;
+  }
+
   return (
     <div className="weather">
       {/*Il tempo deve essere aggiornato ad ogni secondo O mi aiuto con il fuso orario e lo tengo fisso? */}
-      <div className="weather__time">
-        Time: {Date(jsonData.dt).slice(0, 21)}
-      </div>
-      <div className="weather__maxAndMin">
-        Max:{Math.round((jsonData.main?.temp_max - 273.15) * 10) / 10}°C Min:
-        {Math.round((jsonData.main?.temp_min - 273.15) * 10) / 10}°C
+      <div className="weather__shortInfo">
+        <div className="weather__time">
+          {toDateString(Date(jsonData.dt).slice(0, 21))}
+        </div>
+        <div className="weather__maxAndMin">
+          <div className="weather__max">
+            Max: {roundTemp(jsonData.main?.temp_max)}°C
+          </div>
+          <div className="weather__min">
+            Min: {roundTemp(jsonData.main?.temp_min)}°C
+          </div>
+        </div>
       </div>
       <div className="weather__info">
         <div className="weather__temperature">
           <div className="weather__celsius">
-            {Math.round((jsonData.main?.temp - 273.15) * 10) / 10}°C
+            {roundTemp(jsonData.main?.temp)}°C
           </div>
           <div className="weather__perceivedTemperature">
             Perceived temperature:
-            {Math.round((jsonData.main?.feels_like - 273.15) * 10) / 10}°C
+            {roundTemp(jsonData.main?.feels_like)}°C
           </div>
         </div>
         <div className="weather__icon">
@@ -90,10 +177,10 @@ function Weather() {
                 <p>Direction</p>
                 <p>{getDirectionFromDegree(jsonData.wind?.deg)}</p>
               </div>
-              <div className="weather__windforce">
+              {/* <div className="weather__windforce">
                 <p>Force</p>
                 <p>{jsonData.wind?.gust}[m/sec]</p>
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="weather__pressure">
@@ -123,10 +210,16 @@ function Weather() {
         </div>
       </div>
       <div className="weather__otherDays">
-        <OtherDays />
-        <OtherDays />
-        <OtherDays />
-        <OtherDays />
+        {index.map((id) => {
+          return (
+            <OtherDays
+              key={id}
+              id={id}
+              lon={jsonData.coord?.lon}
+              lat={jsonData.coord?.lat}
+            />
+          );
+        })}
       </div>
     </div>
   );

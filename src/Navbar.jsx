@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import "./Navbar.css";
 import { WeatherContext } from "./WeatherContext";
-import Countries from "./Countries";
 import cities from "cities.json";
 
 function NavBar() {
@@ -12,10 +11,8 @@ function NavBar() {
   const [suggestions, setSuggestions] = useState([]);
 
   const setCity = (event) => {
-    let citta = input.trim().split(",")[0];
-    if (citta.length === null) console.log("ERRORE DIOCANE");
     event.preventDefault();
-    setCityName(input.trim().split(",")[0]);
+    setCityName(input.trim());
     setInput("");
     setSuggestions([]);
   };
@@ -24,7 +21,7 @@ function NavBar() {
     let value = e.target.value;
     setInput(value);
     let newSuggestions = [];
-    if (value.length >= 5) {
+    if (value.length >= 4) {
       value = value.toLowerCase();
       const regex = new RegExp([value]);
       for (let i = 0; i < cities.length; i++) {
@@ -54,7 +51,7 @@ function NavBar() {
             className="navbar__input"
             value={input}
             type="text"
-            placeholder="Type a city or a country..."
+            placeholder="Syntax: City, Country Code"
             onChange={(event) => onTextChanged(event)}
             onSubmit={setCity}
           />
