@@ -3,6 +3,8 @@ import "./Navbar.css";
 import { WeatherContext } from "./WeatherContext";
 import cities from "cities.json";
 
+/* Navbar displays the name of the chosen city, and provides a searchbar for searching other cities. */
+
 function NavBar() {
   const { data, city } = useContext(WeatherContext);
   const [input, setInput] = useState("");
@@ -10,6 +12,7 @@ function NavBar() {
   const [cityName, setCityName] = city;
   const [suggestions, setSuggestions] = useState([]);
 
+  //After the button is pressed or the form is submitted, the name of the chosen city is send at the state management
   const setCity = (event) => {
     event.preventDefault();
     setCityName(input.trim());
@@ -17,6 +20,7 @@ function NavBar() {
     setSuggestions([]);
   };
 
+  // Based on the characters typed in the searchbar, shows the suggestions, picked from the JSON database "cities"
   const onTextChanged = (e) => {
     let value = e.target.value;
     setInput(value);
@@ -35,6 +39,7 @@ function NavBar() {
     setSuggestions(newSuggestions);
   };
 
+  //When a suggestion is selected, set the input at the same value, and clear the suggestion array
   const suggestionSelected = (value) => {
     setInput(value);
     setSuggestions([]);
@@ -67,9 +72,7 @@ function NavBar() {
         <div className="navbar__suggestions">
           {suggestions.length === 0 ? null : (
             <div className="navbar__country">
-              {/* Cambio passandogli non Afghanistan ma solo gli elementi filtrati. Da sistemare il Json assolutamente */}
               {suggestions.map((country) => (
-                // <Countries country={country} />
                 <p
                   className="navbar__suggestionComponent"
                   key={country.toString()}

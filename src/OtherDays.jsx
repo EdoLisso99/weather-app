@@ -17,6 +17,10 @@ function OtherDays({ id, lon, lat }) {
     "Sunday",
   ];
 
+  //Make an API call to retrieve the information about the weather, making the various controls of the case; I have to make a distinct
+  //call for the other days because the API call requires the latitude and the longitude rather than the name of the city; i could use
+  //the "cities" JSON database for knowing those values, but the latitude and the longitude of the cities in that database differs,
+  // so the answer received is unconsistent
   useEffect(() => {
     fetch(
       `https://api.openweathermap.org/data/2.5/onecall?lat=${
@@ -28,6 +32,7 @@ function OtherDays({ id, lon, lat }) {
       .then((response) => response.json())
       .then(
         (result) => {
+          //If the API call set the location at the default value, Lecco
           if (result.cod === "404" || result.message === "city not found") {
             alert(
               "Error! The chosen city has an invalid name or country.\nPlease use ISO 3166 country codes.\nThe weather will be shown in the default location"
@@ -44,12 +49,14 @@ function OtherDays({ id, lon, lat }) {
       );
   }, [lat, lon]);
 
+  //Calculate day of the week, and return the extended version of the name (the API call returns only the shortened version)
   function calculateDay() {
     let today = new Date();
     today = today.getDay() + id - 1;
     return arrayDay[today % 7];
   }
 
+  //Round the temperature with only two decimal figures
   function roundTemp(number) {
     let temp = Math.round((number - 273.15) * 10) / 10;
     return temp;

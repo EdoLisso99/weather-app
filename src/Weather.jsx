@@ -8,6 +8,7 @@ function Weather() {
   const [jsonData, setJsonData] = data;
   const index = [1, 2, 3, 4, 5, 6, 7];
 
+  //From the degree returns the direction of the wind
   function getDirectionFromDegree(angle) {
     const degreePerDirection = 360 / 8;
     const offsetAngle = angle + degreePerDirection / 2;
@@ -35,6 +36,7 @@ function Weather() {
       : "N-W";
   }
 
+  //Convert the date to the exact time
   function toDateTime(secs) {
     let t = new Date(1970, 0, 1);
     t.setSeconds(secs);
@@ -45,11 +47,13 @@ function Weather() {
     return hours + ":" + minutes;
   }
 
+  //Round the temperature with only two decimal figures
   function roundTemp(number) {
     let temp = Math.round((number - 273.15) * 10) / 10;
     return temp;
   }
 
+  //From a date return the string, in this format: "dayOfTheWeek dayNumber month year hour:minutes"
   function toDateString(date) {
     let strDate = date.split(" ");
     let month;

@@ -2,11 +2,14 @@ import React, { useEffect, useState, createContext } from "react";
 
 export const WeatherContext = createContext();
 
+//With the react state management i can share globally the data of the API call, with the name of the city selected
 export const WeatherProvider = (props) => {
   const [jsonData, setJsonData] = useState({});
   const [cityName, setCityName] = useState("");
   let oldCityName = "";
   let newCityName = "";
+
+  //Make an API call, with all the controls of the case. If the name of the city submitted is invalid, restore the previous location.
   useEffect(() => {
     newCityName = cityName;
     let countryCode =
