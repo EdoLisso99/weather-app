@@ -136,38 +136,31 @@ function Weather() {
         <div className="weather__time">
           {toDateString(Date(jsonData.dt).slice(0, 21))}
         </div>
-        <div className="weather__maxAndMin">
-          <div className="weather__max">
-            Max: {roundTemp(jsonData.main?.temp_max)}°C
-          </div>
-          <div className="weather__min">
-            Min: {roundTemp(jsonData.main?.temp_min)}°C
-          </div>
-        </div>
       </div>
       <div className="weather__info">
         <div className="weather__temperature">
           <div className="weather__celsius">
             {roundTemp(jsonData.main?.temp)}°C
           </div>
-          <div className="weather__perceivedTemperature">
-            Perceived temperature:
-            {roundTemp(jsonData.main?.feels_like)}°C
+          <div className="weather__icon">
+            <img
+              className="weather__image"
+              src={`http://openweathermap.org/img/wn/${jsonData.weather?.[0].icon}@2x.png`}
+              alt="Weather Icon"
+            />
+            <p className="weather__iconDescription">
+              {(
+                jsonData.weather?.[0].description.charAt(0).toUpperCase() +
+                jsonData.weather?.[0].description.slice(1)
+              ).toString()}
+            </p>
           </div>
         </div>
-        <div className="weather__icon">
-          <img
-            className="weather__image"
-            src={`http://openweathermap.org/img/wn/${jsonData.weather?.[0].icon}@2x.png`}
-            alt="Weather Icon"
-          />
-          <p className="weather__iconDescription">
-            {(
-              jsonData.weather?.[0].description.charAt(0).toUpperCase() +
-              jsonData.weather?.[0].description.slice(1)
-            ).toString()}
-          </p>
+        <div className="weather__perceivedTemperature">
+          Perceived temperature:
+          {roundTemp(jsonData.main?.feels_like)}°C
         </div>
+
         {/* Lo devo rendere una tabella! */}
         <div className="weather__otherInfo">
           <div className="weather__wind">

@@ -24,19 +24,21 @@ function NavBar() {
   const onTextChanged = (e) => {
     let value = e.target.value;
     setInput(value);
-    let newSuggestions = [];
+    let unique = [];
     if (value.length >= 4) {
       value = value.toLowerCase();
       const regex = new RegExp([value]);
       for (let i = 0; i < cities.length; i++) {
         if (regex.test(cities[i]["name"].toLowerCase()))
-          newSuggestions = [
-            ...newSuggestions,
-            `${cities[i]["name"]}, ${cities[i]["country"]}`,
+          unique = [
+            ...new Set([
+              ...unique,
+              `${cities[i]["name"]}, ${cities[i]["country"]}`,
+            ]),
           ];
       }
     }
-    setSuggestions(newSuggestions);
+    setSuggestions(unique);
   };
 
   //When a suggestion is selected, set the input at the same value, and clear the suggestion array
@@ -60,6 +62,7 @@ function NavBar() {
             onChange={(event) => onTextChanged(event)}
             onSubmit={setCity}
           />
+
           <button
             className="navbar__submitBtn"
             type="submit"
@@ -73,13 +76,13 @@ function NavBar() {
           {suggestions.length === 0 ? null : (
             <div className="navbar__country">
               {suggestions.map((country) => (
-                <p
+                <button
                   className="navbar__suggestionComponent"
                   key={country.toString()}
                   onClick={() => suggestionSelected(country)}
                 >
                   {country}
-                </p>
+                </button>
               ))}
             </div>
           )}
