@@ -27,7 +27,7 @@ function OtherDays({ id, lon, lat }) {
         lat === "" || lat === undefined ? 45.85 : lat
       }&lon=${
         lon === "" || lon === undefined ? 9.39 : lon
-      }&exclude=current,minutely,hourly&appid=fd2c86fbff118f10312f83b48138b8f8`
+      }&exclude=current,minutely,hourly&appid=1765ea1d58ef38e71b1181d3a8b93251`
     )
       .then((response) => response.json())
       .then(
@@ -63,8 +63,8 @@ function OtherDays({ id, lon, lat }) {
   }
 
   return (
-    <div className="otherDays">
-      <div className="otherDays__shortInfo">
+    <div className="otherDays__shortInfo">
+      <div className={`otherDays${id}`}>
         <div className="otherDays__day">{calculateDay()}</div>
         <div className="otherDays__icon">
           <img

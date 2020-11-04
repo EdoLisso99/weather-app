@@ -77,8 +77,6 @@ function App() {
     }
   }, [jsonData]);
 
-  console.log("Background: ", background);
-
   return (
     <div className="app">
       <div className="app__background">

@@ -3,11 +3,10 @@
 }
 
 .navbar {
-  width: 100%;
   display: flex;
+  flex-grow: 1;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
   padding: 15px;
 }
 
@@ -17,9 +16,13 @@
 }
 
 .navbar__country {
+  background: #141c3f;
+  opacity: 0.96;
   position: absolute;
   max-height: 300px;
   overflow: auto;
+  width: 100%;
+  margin-right: -2px;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
@@ -36,9 +39,12 @@
 }
 
 .navbar__input {
-  background-color: wheat;
+  background: linear-gradient(#c7e081, #97c41d);
+  padding-left: 3px;
   display: flex;
   flex-grow: 1;
+  border: 0;
+  font-size: 15px;
 }
 
 .navbar__searchbar {
@@ -50,15 +56,21 @@
 }
 
 .navbar__submitBtn {
-  background-color: white;
+  font-size: 15px;
+  padding: 3px;
+  color: #0b1024;
+  border: 0;
   display: flex;
+  background: linear-gradient(#afa40f, #ffb01e);
 }
 
 .navbar__suggestions {
+  position: relative;
 }
 
 .navbar__suggestionComponent {
   display: flex;
+  font-size: 15px;
   background-color: rgb(230, 198, 230);
   flex-grow: 1;
 }

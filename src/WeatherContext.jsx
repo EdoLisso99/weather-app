@@ -9,6 +9,9 @@ export const WeatherProvider = (props) => {
   let oldCityName = "";
   let newCityName = "";
 
+  //Main API key: fd2c86fbff118f10312f83b48138b8f8
+  //Secondary API key: 1765ea1d58ef38e71b1181d3a8b93251
+
   //Make an API call, with all the controls of the case. If the name of the city submitted is invalid, restore the previous location.
   useEffect(() => {
     newCityName = cityName;
@@ -21,7 +24,7 @@ export const WeatherProvider = (props) => {
           : cityName.split(",")[0]
       }${
         countryCode === "" || countryCode === undefined ? "" : `,${countryCode}`
-      }&appid=fd2c86fbff118f10312f83b48138b8f8` //&lang=it
+      }&appid=1765ea1d58ef38e71b1181d3a8b93251` //&lang=it
     )
       .then((response) => response.json())
       .then(

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import "./Weather.css";
 import OtherDays from "./OtherDays";
 import { WeatherContext } from "./WeatherContext";
@@ -131,16 +131,18 @@ function Weather() {
 
   return (
     <div className="weather">
-      {/*Il tempo deve essere aggiornato ad ogni secondo O mi aiuto con il fuso orario e lo tengo fisso? */}
-      <div className="weather__shortInfo">
-        <div className="weather__time">
-          {toDateString(Date(jsonData.dt).slice(0, 21))}
-        </div>
+      <div className="weather__time">
+        {toDateString(Date(jsonData.dt).slice(0, 21))}
       </div>
       <div className="weather__info">
         <div className="weather__temperature">
           <div className="weather__celsius">
-            {roundTemp(jsonData.main?.temp)}°C
+            <div className="weather__currentTemperature">
+              {roundTemp(jsonData.main?.temp)}°C
+            </div>
+            <div className="weather__perceivedTemperature">
+              Perceived: {roundTemp(jsonData.main?.feels_like)} °C
+            </div>
           </div>
           <div className="weather__icon">
             <img
@@ -156,56 +158,51 @@ function Weather() {
             </p>
           </div>
         </div>
-        <div className="weather__perceivedTemperature">
-          Perceived temperature:
-          {roundTemp(jsonData.main?.feels_like)}°C
-        </div>
 
-        {/* Lo devo rendere una tabella! */}
         <div className="weather__otherInfo">
           <div className="weather__wind">
-            <p className="weather__windTitle">Wind</p>
-            <div className="weather__windProp">
-              <div className="weather__windSpeed">
-                <p>Speed</p>
-                <p>{jsonData.wind?.speed}[m/sec]</p>
-              </div>
-              <div className="weather__windDirection">
-                <p>Direction</p>
-                <p>{getDirectionFromDegree(jsonData.wind?.deg)}</p>
-              </div>
-              {/* <div className="weather__windforce">
-                <p>Force</p>
-                <p>{jsonData.wind?.gust}[m/sec]</p>
-              </div> */}
+            <div className="weather__windTitle">Wind</div>
+            <div className="weather__windSpeed">
+              <p>Speed</p>
+              <p>{jsonData.wind?.speed}[m/s]</p>
+            </div>
+            <div className="weather__windDirection">
+              <p>Direction</p>
+              <p>{getDirectionFromDegree(jsonData.wind?.deg)}</p>
             </div>
           </div>
           <div className="weather__pressure">
-            <p>Pressure</p>
-            <p>{jsonData.main?.pressure}[hPa]</p>
+            <div className="weather__pressureTitle">Pressure</div>
+            <div className="weather__pressureData">
+              {jsonData.main?.pressure}[hPa]
+            </div>
           </div>
           <div className="weather__humidity">
-            <p>Humidity</p>
-            <p>{jsonData.main?.humidity}[%]</p>
+            <div className="weather__humidityTitle">Humidity</div>
+            <p className="weather__humidityData">
+              {jsonData.main?.humidity}[%]
+            </p>
           </div>
+
           <div className="weather__visibility">
-            <p>Visibility</p>
+            <div className="weather__visibilityTitle">Visibility</div>
             <p>{jsonData.visibility}[m]</p>
           </div>
-          <div className="weather__clouds">
-            <p>Cloudiness</p>
+          <div className="weather__cloudiness">
+            <div className="weather__cloudinessTitle">Cloudiness</div>
             <p>{jsonData.clouds?.all}[%]</p>
           </div>
           <div className="weather__sunset">
-            <p>Sunset</p>
+            <div className="weather__sunsetTitle">Sunset</div>
             <p>{toDateTime(jsonData.sys?.sunset)}</p>
           </div>
           <div className="weather__sunrise">
-            <p>Sunrise</p>
+            <div className="weather__sunriseTitle">Sunrise</div>
             <p>{toDateTime(jsonData.sys?.sunrise)}</p>
           </div>
         </div>
       </div>
+
       <div className="weather__otherDays">
         {index.map((id) => {
           return (
