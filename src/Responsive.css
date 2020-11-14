@@ -1,0 +1,767 @@
+@media only screen and (min-width: 500px) {
+  .navbar__searchbar {
+    font-size: 45px !important;
+    padding: 5px !important;
+  }
+
+  .navbar__submitBtn,
+  input::placeholder,
+  input[type="text"],
+  .navbar__suggestionComponent,
+  .weather__title,
+  .weather__windTitle,
+  .weather__subtitle,
+  .otherDays__maxAndMin {
+    font-size: 18px !important;
+  }
+
+  .weather__time {
+    font-size: 23px !important;
+  }
+
+  .weather__currentTemperature {
+    font-size: 80px !important;
+  }
+
+  .weather__image {
+    width: 106px !important;
+    height: 106px !important;
+  }
+  .weather__perceivedTemperature,
+  .weather__iconDescription,
+  .weather__data {
+    font-size: 16px !important;
+  }
+
+  .otherDays__day {
+    font-size: 20px !important;
+  }
+}
+
+/* Ti prego cariami il tutto e non sputtanarmi nulla plz */
+
+@media only screen and (min-width: 575px) {
+  .navbar__city,
+  .navbar__searchbar {
+    font-size: 50px !important;
+    padding: 5px !important;
+  }
+
+  .navbar__submitBtn,
+  input::placeholder,
+  input[type="text"],
+  .navbar__suggestionComponent,
+  .weather__title,
+  .weather__windTitle,
+  .weather__subtitle,
+  .otherDays__maxAndMin {
+    font-size: 21px !important;
+  }
+
+  .weather__time {
+    font-size: 26px !important;
+  }
+
+  .weather__currentTemperature {
+    font-size: 85px !important;
+  }
+
+  .weather__image {
+    width: 113px !important;
+    height: 113px !important;
+  }
+  .weather__perceivedTemperature,
+  .weather__iconDescription,
+  .weather__data {
+    font-size: 19px !important;
+  }
+
+  .otherDays__day {
+    font-size: 23px !important;
+  }
+}
+
+@media only screen and (min-width: 650px) {
+  .navbar__city,
+  .navbar__searchbar {
+    font-size: 55px !important;
+    padding: 7.5px !important;
+  }
+
+  .navbar__submitBtn,
+  input::placeholder,
+  input[type="text"],
+  .navbar__suggestionComponent,
+  .weather__title,
+  .weather__subtitle,
+  .otherDays__maxAndMin {
+    font-size: 24px !important;
+  }
+
+  .weather__otherDays {
+    padding: 10px !important;
+  }
+
+  .weather__otherInfo {
+    padding: 10px !important;
+    padding-bottom: none;
+  }
+
+  .weather__windTitle {
+    font-size: 24px !important;
+  }
+
+  .weather__time {
+    font-size: 29px !important;
+    padding: 5px !important;
+  }
+
+  .weather__currentTemperature {
+    font-size: 90px !important;
+  }
+
+  .weather__image {
+    width: 120px !important;
+    height: 120px !important;
+  }
+
+  .weather__perceivedTemperature,
+  .weather__iconDescription,
+  .weather__data {
+    font-size: 21px !important;
+    padding: 5px !important;
+  }
+
+  .otherDays__day {
+    font-size: 26px !important;
+  }
+}
+
+@media only screen and (min-width: 725px) {
+  .navbar__city,
+  .navbar__searchbar {
+    font-size: 60px !important;
+    padding: 7.5px !important;
+  }
+
+  .navbar__submitBtn,
+  input::placeholder,
+  input[type="text"],
+  .navbar__suggestionComponent,
+  .weather__title,
+  .weather__windTitle,
+  .weather__subtitle,
+  .otherDays__maxAndMin {
+    font-size: 27px !important;
+  }
+
+  .weather__time {
+    font-size: 32px !important;
+  }
+
+  .weather__currentTemperature {
+    font-size: 95px !important;
+  }
+
+  .weather__image {
+    width: 126px !important;
+    height: 126px !important;
+  }
+  .weather__perceivedTemperature,
+  .weather__iconDescription,
+  .weather__data {
+    font-size: 24px !important;
+  }
+
+  .otherDays__day {
+    font-size: 29px !important;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .navbar__city,
+  .navbar__searchbar {
+    font-size: 65px !important;
+    padding: 10px !important;
+  }
+
+  .navbar__submitBtn,
+  input::placeholder,
+  input[type="text"],
+  .navbar__suggestionComponent,
+  .weather__title,
+  .weather__windTitle,
+  .weather__subtitle,
+  .otherDays__maxAndMin {
+    font-size: 30px !important;
+  }
+
+  .weather__time {
+    font-size: 35px !important;
+    padding: 10px !important;
+  }
+
+  .weather__otherDays,
+  .weather__otherInfo {
+    padding: 15px !important;
+  }
+
+  .weather__otherInfo {
+    padding: 15px !important;
+    padding-bottom: none;
+  }
+
+  .weather__currentTemperature {
+    font-size: 100px !important;
+  }
+
+  .weather__image {
+    width: 133px !important;
+    height: 133px !important;
+  }
+  .weather__perceivedTemperature,
+  .weather__iconDescription,
+  .weather__data {
+    font-size: 27px !important;
+    padding: 10px !important;
+  }
+
+  .otherDays__day {
+    font-size: 32px !important;
+  }
+}
+
+@media only screen and (min-width: 875px) {
+  .navbar__city,
+  .navbar__searchbar {
+    font-size: 70px !important;
+    padding: 10px !important;
+  }
+
+  .navbar__submitBtn,
+  input::placeholder,
+  input[type="text"],
+  .navbar__suggestionComponent,
+  .weather__title,
+  .weather__windTitle,
+  .weather__subtitle,
+  .otherDays__maxAndMin {
+    font-size: 33px !important;
+  }
+
+  .weather__time {
+    font-size: 38px !important;
+  }
+
+  .weather__currentTemperature {
+    font-size: 105px !important;
+  }
+
+  .weather__image {
+    width: 140px !important;
+    height: 140px !important;
+  }
+  .weather__perceivedTemperature,
+  .weather__iconDescription,
+  .weather__data {
+    font-size: 30px !important;
+  }
+
+  .otherDays__day {
+    font-size: 35px !important;
+  }
+}
+
+@media only screen and (min-width: 950px) {
+  .navbar__city,
+  .navbar__searchbar {
+    font-size: 75px !important;
+    padding: 13.5px !important;
+  }
+
+  .weather__otherDays,
+  .weather__otherInfo {
+    padding: 20px !important;
+  }
+
+  .weather__otherInfo {
+    padding: 20px !important;
+    padding-bottom: none;
+  }
+
+  .navbar__submitBtn,
+  input::placeholder,
+  input[type="text"],
+  .navbar__suggestionComponent,
+  .weather__title,
+  .weather__windTitle,
+  .weather__subtitle,
+  .otherDays__maxAndMin {
+    font-size: 36px !important;
+  }
+
+  .weather__time {
+    font-size: 41px !important;
+    padding: 15px !important;
+  }
+
+  .weather__currentTemperature {
+    font-size: 110px !important;
+  }
+
+  .weather__image {
+    width: 147px !important;
+    height: 147px !important;
+  }
+  .weather__perceivedTemperature,
+  .weather__iconDescription,
+  .weather__data {
+    font-size: 33px !important;
+    padding: 15px !important;
+  }
+
+  .otherDays__day {
+    font-size: 38px !important;
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  .navbar__city,
+  .navbar__searchbar {
+    font-size: 80px !important;
+    padding: 13.5px !important;
+  }
+
+  .navbar__submitBtn,
+  input::placeholder,
+  input[type="text"],
+  .navbar__suggestionComponent,
+  .weather__title,
+  .weather__windTitle,
+  .weather__subtitle,
+  .otherDays__maxAndMin {
+    font-size: 39px !important;
+  }
+
+  .weather__time {
+    font-size: 44px !important;
+  }
+
+  .weather__currentTemperature {
+    font-size: 115px !important;
+  }
+
+  .weather__image {
+    width: 153px !important;
+    height: 153px !important;
+  }
+  .weather__perceivedTemperature,
+  .weather__iconDescription,
+  .weather__data {
+    font-size: 36px !important;
+  }
+
+  .otherDays__day {
+    font-size: 41px !important;
+  }
+}
+
+@media only screen and (min-width: 1500px) {
+  .navbar__city,
+  .navbar__searchbar {
+    font-size: 85px !important;
+    padding: 15px !important;
+  }
+  .navbar__submitBtn,
+  input::placeholder,
+  input[type="text"],
+  .navbar__suggestionComponent,
+  .weather__title,
+  .weather__windTitle,
+  .weather__subtitle,
+  .otherDays__maxAndMin {
+    font-size: 42px !important;
+  }
+
+  .weather__otherDays,
+  .weather__otherInfo {
+    padding: 25px !important;
+  }
+
+  .weather__otherInfo {
+    padding: 25px !important;
+    padding-bottom: none;
+  }
+
+  .weather__time {
+    font-size: 47px !important;
+    padding: 15px !important;
+  }
+
+  .weather__currentTemperature {
+    font-size: 120px !important;
+  }
+
+  .weather__image {
+    width: 160px !important;
+    height: 160px !important;
+  }
+  .weather__perceivedTemperature,
+  .weather__iconDescription,
+  .weather__data {
+    font-size: 39px !important;
+    padding: 15px !important;
+  }
+
+  .otherDays__day {
+    font-size: 44px !important;
+  }
+}
+
+@media only screen and (min-width: 2000px) {
+  .navbar__city,
+  .navbar__searchbar {
+    font-size: 90px !important;
+    padding: 15px !important;
+  }
+
+  .navbar__submitBtn,
+  input::placeholder,
+  input[type="text"],
+  .navbar__suggestionComponent,
+  .weather__title,
+  .weather__windTitle,
+  .weather__subtitle,
+  .otherDays__maxAndMin {
+    font-size: 45px !important;
+  }
+
+  .weather__time {
+    font-size: 50px !important;
+  }
+
+  .weather__currentTemperature {
+    font-size: 125px !important;
+  }
+
+  .weather__image {
+    width: 166px !important;
+    height: 166px !important;
+  }
+  .weather__perceivedTemperature,
+  .weather__iconDescription,
+  .weather__data {
+    font-size: 42px !important;
+  }
+
+  .otherDays__day {
+    font-size: 47px !important;
+  }
+}
+
+@media only screen and (min-width: 2500px) {
+  .navbar__city,
+  .navbar__searchbar {
+    font-size: 95px !important;
+    padding: 18px !important;
+  }
+  .navbar__submitBtn,
+  input::placeholder,
+  input[type="text"],
+  .navbar__suggestionComponent,
+  .weather__title,
+  .weather__windTitle,
+  .weather__subtitle,
+  .otherDays__maxAndMin {
+    font-size: 48px !important;
+  }
+
+  .weather__otherDays,
+  .weather__otherInfo {
+    padding: 30px !important;
+  }
+
+  .weather__otherInfo {
+    padding: 30px !important;
+    padding-bottom: none;
+  }
+
+  .weather__time {
+    font-size: 53px !important;
+    padding: 20px !important;
+  }
+
+  .weather__currentTemperature {
+    font-size: 130px !important;
+  }
+
+  .weather__image {
+    width: 173px !important;
+    height: 173px !important;
+  }
+  .weather__perceivedTemperature,
+  .weather__iconDescription,
+  .weather__data {
+    font-size: 45px !important;
+    padding: 15px !important;
+  }
+
+  .otherDays__day {
+    font-size: 50px !important;
+  }
+}
+
+@media only screen and (min-width: 3000px) {
+  .navbar__city,
+  .navbar__searchbar {
+    font-size: 100px !important;
+    padding: 18px !important;
+  }
+
+  .navbar__submitBtn,
+  input::placeholder,
+  input[type="text"],
+  .navbar__suggestionComponent,
+  .weather__title,
+  .weather__windTitle,
+  .weather__subtitle,
+  .otherDays__maxAndMin {
+    font-size: 51px !important;
+  }
+
+  .weather__otherDays,
+  .weather__otherInfo {
+    padding: 38px !important;
+  }
+
+  .weather__otherInfo {
+    padding: 38px !important;
+    padding-bottom: none;
+  }
+
+  .weather__time {
+    font-size: 56px !important;
+  }
+
+  .weather__currentTemperature {
+    font-size: 135px !important;
+  }
+
+  .weather__image {
+    width: 180px !important;
+    height: 180px !important;
+  }
+  .weather__perceivedTemperature,
+  .weather__iconDescription,
+  .weather__data {
+    font-size: 48px !important;
+  }
+
+  .otherDays__day {
+    font-size: 53px !important;
+  }
+}
+
+@media only screen and (min-width: 3500px) {
+  .navbar__city,
+  .navbar__searchbar {
+    font-size: 125px !important;
+    padding: 22.5px !important;
+  }
+
+  .navbar__submitBtn,
+  input::placeholder,
+  input[type="text"],
+  .navbar__suggestionComponent,
+  .weather__title,
+  .weather__windTitle,
+  .weather__subtitle,
+  .otherDays__maxAndMin {
+    font-size: 64px !important;
+  }
+
+  .weather__time {
+    font-size: 70px !important;
+  }
+
+  .weather__currentTemperature {
+    font-size: 169px !important;
+  }
+
+  .weather__otherDays,
+  .weather__otherInfo {
+    padding: 48px !important;
+  }
+
+  .weather__otherInfo {
+    padding: 48px !important;
+    padding-bottom: none;
+  }
+
+  .weather__image {
+    width: 225px !important;
+    height: 225px !important;
+  }
+  .weather__perceivedTemperature,
+  .weather__iconDescription,
+  .weather__data {
+    font-size: 60px !important;
+  }
+
+  .otherDays__day {
+    font-size: 66px !important;
+  }
+}
+
+@media only screen and (min-width: 4000px) {
+  .navbar__city,
+  .navbar__searchbar {
+    font-size: 156px !important;
+    padding: 28px !important;
+  }
+
+  .weather__otherDays,
+  .weather__otherInfo {
+    padding: 60px !important;
+  }
+
+  .weather__otherInfo {
+    padding: 60px !important;
+    padding-bottom: none;
+  }
+
+  .navbar__submitBtn,
+  input::placeholder,
+  input[type="text"],
+  .navbar__suggestionComponent,
+  .weather__title,
+  .weather__windTitle,
+  .weather__subtitle,
+  .otherDays__maxAndMin {
+    font-size: 80px !important;
+  }
+
+  .weather__time {
+    font-size: 88px !important;
+  }
+
+  .weather__currentTemperature {
+    font-size: 211px !important;
+  }
+
+  .weather__image {
+    width: 280px !important;
+    height: 280px !important;
+  }
+  .weather__perceivedTemperature,
+  .weather__iconDescription,
+  .weather__data {
+    font-size: 75px !important;
+  }
+
+  .otherDays__day {
+    font-size: 83px !important;
+  }
+}
+
+@media only screen and (min-width: 5000px) {
+  .navbar__city,
+  .navbar__searchbar {
+    font-size: 195px !important;
+    padding: 35px !important;
+  }
+
+  .weather__otherDays,
+  .weather__otherInfo {
+    padding: 75px !important;
+  }
+
+  .weather__otherInfo {
+    padding: 75px !important;
+    padding-bottom: none;
+  }
+
+  .navbar__submitBtn,
+  input::placeholder,
+  input[type="text"],
+  .navbar__suggestionComponent,
+  .weather__title,
+  .weather__windTitle,
+  .weather__subtitle,
+  .otherDays__maxAndMin {
+    font-size: 100px !important;
+  }
+
+  .weather__time {
+    font-size: 110px !important;
+  }
+
+  .weather__currentTemperature {
+    font-size: 264px !important;
+  }
+
+  .weather__image {
+    width: 351px !important;
+    height: 351px !important;
+  }
+  .weather__perceivedTemperature,
+  .weather__iconDescription,
+  .weather__data {
+    font-size: 94px !important;
+  }
+
+  .otherDays__day {
+    font-size: 104px !important;
+  }
+}
+
+@media only screen and (min-width: 6000px) {
+  .navbar__city,
+  .navbar__searchbar {
+    font-size: 244px !important;
+    padding: 43px !important;
+  }
+
+  .weather__otherDays,
+  .weather__otherInfo {
+    padding: 95px !important;
+  }
+
+  .weather__otherInfo {
+    padding: 95px !important;
+    padding-bottom: none;
+  }
+
+  .navbar__submitBtn,
+  input::placeholder,
+  input[type="text"],
+  .navbar__suggestionComponent,
+  .weather__title,
+  .weather__windTitle,
+  .weather__subtitle,
+  .otherDays__maxAndMin {
+    font-size: 125px !important;
+  }
+
+  .weather__time {
+    font-size: 138px !important;
+  }
+
+  .weather__currentTemperature {
+    font-size: 330px !important;
+  }
+
+  .weather__image {
+    width: 439px !important;
+    height: 439px !important;
+  }
+  .weather__perceivedTemperature,
+  .weather__iconDescription,
+  .weather__data {
+    font-size: 118px !important;
+  }
+
+  .otherDays__day {
+    font-size: 130px !important;
+  }
+}

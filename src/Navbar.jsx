@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import "./Navbar.css";
+import "./Responsive.css";
 import { WeatherContext } from "./WeatherContext";
 import cities from "cities.json";
 
@@ -58,7 +59,7 @@ function NavBar() {
             className="navbar__input"
             value={input}
             type="text"
-            placeholder="Syntax: City, Country Code"
+            placeholder="City Name, Country (Optional)"
             onChange={(event) => onTextChanged(event)}
             onSubmit={setCity}
           />

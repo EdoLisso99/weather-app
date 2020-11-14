@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./OtherDays.css";
+import "./Responsive.css";
 import { WeatherContext } from "./WeatherContext";
 
 function OtherDays({ id, lon, lat }) {

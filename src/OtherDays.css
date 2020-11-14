@@ -1,28 +1,30 @@
 * {
   box-sizing: border-box;
 }
-.otherDays__maxAndMin {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.otherDays__max {
-}
-
-.otherDays__min {
-}
 
 .otherDays__icon {
-}
-
-.otherDays__day,
-.otherDays__maxAndMin {
   display: flex;
   justify-content: center;
 }
 
+.otherDays__maxAndMin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 15px;
+}
+
+.otherDays__day {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 17px;
+}
+
 .otherDays__shortInfo {
+  margin-top: 10px;
   padding: 5px;
   display: flex;
   flex-direction: column;

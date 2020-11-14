@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
 import "./Weather.css";
+import "./Responsive.css";
 import OtherDays from "./OtherDays";
 import { WeatherContext } from "./WeatherContext";
 
 function Weather() {
   const { data } = useContext(WeatherContext);
   const [jsonData, setJsonData] = data;
-  const index = [1, 2, 3, 4, 5, 6, 7];
+  const index = [1, 2, 3, 4, 5, 6];
 
   //From the degree returns the direction of the wind
   function getDirectionFromDegree(angle) {
@@ -163,42 +164,40 @@ function Weather() {
           <div className="weather__wind">
             <div className="weather__windTitle">Wind</div>
             <div className="weather__windSpeed">
-              <p>Speed</p>
-              <p>{jsonData.wind?.speed}[m/s]</p>
+              <div className="weather__subtitle">Speed</div>
+              <p className="weather__data">{jsonData.wind?.speed}[m/s]</p>
             </div>
             <div className="weather__windDirection">
-              <p>Direction</p>
-              <p>{getDirectionFromDegree(jsonData.wind?.deg)}</p>
+              <div className="weather__subtitle">Direction</div>
+              <p className="weather__data">
+                {getDirectionFromDegree(jsonData.wind?.deg)}
+              </p>
             </div>
           </div>
-          <div className="weather__pressure">
-            <div className="weather__pressureTitle">Pressure</div>
-            <div className="weather__pressureData">
-              {jsonData.main?.pressure}[hPa]
-            </div>
+          <div className="weather__container">
+            <div className="weather__title">Pressure</div>
+            <p className="weather__data">{jsonData.main?.pressure}[hPa]</p>
           </div>
-          <div className="weather__humidity">
-            <div className="weather__humidityTitle">Humidity</div>
-            <p className="weather__humidityData">
-              {jsonData.main?.humidity}[%]
-            </p>
+          <div className="weather__container">
+            <div className="weather__title">Humidity</div>
+            <p className="weather__data">{jsonData.main?.humidity}[%]</p>
           </div>
 
-          <div className="weather__visibility">
-            <div className="weather__visibilityTitle">Visibility</div>
-            <p>{jsonData.visibility}[m]</p>
+          <div className="weather__container">
+            <div className="weather__title">Visibility</div>
+            <p className="weather__data">{jsonData.visibility}[m]</p>
           </div>
-          <div className="weather__cloudiness">
-            <div className="weather__cloudinessTitle">Cloudiness</div>
-            <p>{jsonData.clouds?.all}[%]</p>
+          <div className="weather__container">
+            <div className="weather__title">Cloudiness</div>
+            <p className="weather__data">{jsonData.clouds?.all}[%]</p>
           </div>
-          <div className="weather__sunset">
-            <div className="weather__sunsetTitle">Sunset</div>
-            <p>{toDateTime(jsonData.sys?.sunset)}</p>
+          <div className="weather__container">
+            <div className="weather__title">Sunset</div>
+            <p className="weather__data">{toDateTime(jsonData.sys?.sunset)}</p>
           </div>
-          <div className="weather__sunrise">
-            <div className="weather__sunriseTitle">Sunrise</div>
-            <p>{toDateTime(jsonData.sys?.sunrise)}</p>
+          <div className="weather__container">
+            <div className="weather__title">Sunrise</div>
+            <p className="weather__data">{toDateTime(jsonData.sys?.sunrise)}</p>
           </div>
         </div>
       </div>

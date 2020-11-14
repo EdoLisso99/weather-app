@@ -6,6 +6,15 @@
   margin-left: 10px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.weather__container {
+  margin-top: 10px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .weather__currentTemperature {
@@ -16,7 +25,9 @@
   font-weight: 550;
 }
 
-.weather__humidityData {
+.weather__data {
+  padding: 5px;
+  font-size: 13px;
   display: flex;
   align-self: center;
 }
@@ -25,19 +36,13 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-content: center;
-  justify-content: center;
-}
-
-.weather__iconDescription {
-  display: flex;
+  align-items: center;
 }
 
 .weather__image {
-  width: 100%;
-  display: flex;
   width: 100px;
   height: 100px;
+  display: flex;
 }
 
 .weather__info {
@@ -46,8 +51,8 @@
 }
 
 .weather__otherDays {
-  margin-top: 15px;
-  padding: 10px;
+  margin-top: -5px;
+  padding: 5px;
   width: 100%;
   display: grid;
   grid-template-columns: 33% 33% 33%;
@@ -55,69 +60,61 @@
 }
 
 .weather__otherInfo {
-  margin-top: 10px;
+  padding: 5px;
+  padding-bottom: none;
   display: grid;
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: 24% 27% 23% 26%;
   grid-template-rows: auto auto;
 }
 
-.weather__perceivedTemperature {
+.weather__perceivedTemperature,
+.weather__iconDescription {
   display: flex;
-  justify-content: center;
+  width: 100%;
   font-size: 13px;
-}
-
-.weather__pressure,
-.weather__humidity {
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
+  justify-content: center;
   justify-self: center;
-}
-
-.weather__pressureData {
-  padding: 5px;
-}
-
-.weather__sunrise,
-.weather__sunset,
-.weather__visibility,
-.weather__cloudiness {
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
+  justify-items: center;
+  align-content: center;
+  align-self: center;
   align-items: center;
+}
+
+.weather__subtitle {
+  padding: 5px;
+  font-style: italic;
+  font-weight: 550;
+  font-size: 15px;
 }
 
 .weather__temperature {
   display: grid;
   grid-template-columns: 60% 40%;
   grid-template-rows: auto;
-  margin-top: 15px;
   width: 100%;
-  grid-gap: 20px;
+  padding: 5px;
+  justify-items: center;
 }
 
 .weather__time {
   display: flex;
   justify-content: center;
+  font-size: 20px;
+  color: rgb(250, 250, 210);
+}
+
+.weather__title {
+  font-weight: 700;
+  font-size: 15px;
 }
 
 .weather__wind {
+  margin-top: 10px;
   padding: 5px;
   display: grid;
   grid-column: span 2;
   grid-template-rows: auto auto;
   grid-template-columns: auto auto;
-}
-
-.weather__wind p,
-.weather__humidity p,
-.weather__sunrise p,
-.weather__sunset p,
-.weather__visibility p,
-.weather__cloudiness p {
-  padding: 5px;
 }
 
 .weather__windDirection {
@@ -134,10 +131,8 @@
 
 .weather__windTitle {
   grid-column: span 2;
+  font-weight: 700;
+  font-size: 15px;
   display: flex;
   justify-content: center;
-}
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
 }
