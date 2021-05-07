@@ -1,7 +1,6 @@
 # Weather App
 
-## Progetto visibile sul link
-https://weather-app-a2f70.web.app/
+## Progetto visibile sul link https://weather-app-a2f70.web.app/
 
 ### Breve descrizione del progetto
 Weather app è un sito web hostato con Firebase che, come da nome, serve per vedere le previsioni meteo della località selezionata, in aggiunta ad altre informazioni, come la pressione, la direzione ed intensità del vento, l'umidità e la nuvolosità che c'è nel luogo.
